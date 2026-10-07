@@ -106,13 +106,13 @@
 <h2>Rules for this variant</h2>
 <div class="rules">
   <ol>
-    <li>The dot row is visible even before the user's very first log.</li>
+    <li>The dot row is visible even before the user's very first log — it isn't gated behind a first action the way the previous version was.</li>
     <li>Dot states: green checkmark (logged), blank near-white circle (either a missed past day or a future day — visually identical, distinguished only by position relative to today), blue "+" (today, if unlogged).</li>
     <li><strong>There is no reset mechanic.</strong> Missed days simply accumulate as blank dots, with no limit. The "+" always represents today and keeps moving forward one day at a time, no matter how long the user has been away.</li>
     <li>If a user has logged before but has <strong>no logs in the last 7 days</strong>, the row is laid out exactly like a brand-new user's (today's "+" first, 6 blank dots after), and the copy switches to a more re-engaging "long gap" variant. This is derived from the data on every render — it is not a stored reset event.</li>
     <li><strong>No streak number is displayed anywhere.</strong> There is no "X day streak" text, and no fire icon tied to a numeric threshold.</li>
     <li>Reaching 7 green dots in a row is a celebratory milestone, marked with distinct copy (see below) since there's no number to point to.</li>
-    <li><strong>The row is a rolling 7-day window</strong>, not a cycle that resets every 7 days. Every day, the oldest dot scrolls off the left and a new "+" appears on the right for today. There is no "week 2" reset moment — progress is continuously visible.</li>
+    <li><strong>Decision: the row is a true rolling 7-day window (Alt A)</strong>, not a cycle that resets every 7 days. Every day, the oldest dot scrolls off the left and a new "+" appears on the right for today. There is no "week 2" reset moment — progress is continuously visible.</li>
   </ol>
 </div>
 
@@ -228,7 +228,7 @@
     </div>
   </div>
   <div class="item">
-    <p class="label">Day 7 — days 4–6 missed (3 days in a row, last log 4 days ago)</p>
+    <p class="label">Day 6 — 3 days missed in a row (last log 4 days ago)</p>
     <div class="card">
       <div class="card-content">
         <p class="copy">Been a few days? Today's a good day to check in</p>
@@ -312,11 +312,11 @@
   </div>
 </div>
 
-<h2>5b. The day after a completed week</h2>
-<p style="font-size: 13px; color: #555; margin: -6px 0 14px; max-width: 640px;">The row is a continuous rolling window of the last 7 days, always ending at today. The oldest day scrolls off the left every day. No cycle boundary, no "week 2" reset moment — progress is always visible.</p>
+<h2>5b. The day after a completed week (decided: rolling window)</h2>
+<p style="font-size: 13px; color: #555; margin: -6px 0 14px; max-width: 640px;">Decision: the row is a continuous rolling window of the last 7 days, always ending at today. The oldest day scrolls off the left every day. No cycle boundary, no "week 2" reset moment — progress is always visible.</p>
 <div class="grid">
   <div class="item">
-    <p class="label">Day 8 — 6 real days + today's plus</p>
+    <p class="label">Chosen — Alt A: 6 real days + today's plus</p>
     <div class="card">
       <div class="card-content">
         <p class="copy">How are you feeling today?</p>
