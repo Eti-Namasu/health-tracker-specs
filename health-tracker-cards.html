@@ -111,7 +111,7 @@
     <li>Dot states: green checkmark (logged), blank near-white circle (either a missed past day or a future day — visually identical, distinguished only by position relative to today), blue "+" (today, if unlogged).</li>
     <li><strong>There is no reset mechanic.</strong> Missed days simply accumulate as blank dots, with no limit. The "+" always represents today and keeps moving forward one day at a time, no matter how long the user has been away.</li>
     <li>If a user has <strong>no logs in the last 7 days</strong> (or has never logged), the card is shown exactly as it is for a brand-new user: today's "+" first, 6 blank dots after, and the new-user copy. This is derived from the data on every render — it is not a stored reset event.</li>
-    <li><strong>Missed days don't change the copy.</strong> If the row shows a missed day, the card uses the Days 2–6 copy. The Day 7 and Day 8+ copy only appears while the row has no missed days.</li>
+    <li><strong>Missed days don't change the copy.</strong> If the row shows a missed day, the card uses the Days 2–6 copy. The Day 7 copy only appears while the row has no missed days. From Day 8 onwards the card uses the same copy as Days 2–6.</li>
     <li><strong>No streak number is displayed anywhere.</strong> There is no "X day streak" text, and no fire icon tied to a numeric threshold.</li>
     <li>Reaching 7 green dots in a row is a celebratory milestone, marked with distinct copy (see below) since there's no number to point to.</li>
     <li><strong>The row is a rolling 7-day window</strong>, not a cycle that resets every 7 days. Every day, the oldest dot scrolls off the left and a new "+" appears on the right for today. There is no "week 2" reset moment — progress is continuously visible.</li>
@@ -209,7 +209,72 @@
   </div>
 </div>
 
-<h2>3. Missed days — no limit, no reset</h2>
+<h2>3. Full week complete</h2>
+<div class="grid">
+  <div class="item">
+    <p class="label">Day 7 — after logging (7 green dots, full week complete)</p>
+    <div class="card">
+      <div class="card-content">
+        <p class="copy">A full week logged 🎉 You're building a real picture of how you feel</p>
+        <div class="dots">
+          <div class="dot-col"><div class="dot green"></div><span class="letter">S</span></div>
+          <div class="dot-col"><div class="dot green"></div><span class="letter">S</span></div>
+          <div class="dot-col"><div class="dot green"></div><span class="letter">M</span></div>
+          <div class="dot-col"><div class="dot green"></div><span class="letter">T</span></div>
+          <div class="dot-col"><div class="dot green"></div><span class="letter">W</span></div>
+          <div class="dot-col"><div class="dot green"></div><span class="letter">T</span></div>
+          <div class="dot-col"><div class="dot green"></div><span class="letter">F</span></div>
+        </div>
+      </div>
+      <svg class="face" width="52" height="52" role="img" aria-label="Smiling face illustration"><use href="#face"/></svg>
+    </div>
+  </div>
+</div>
+
+<h2>3b. The day after a completed week</h2>
+<p style="font-size: 13px; color: #555; margin: -6px 0 14px; max-width: 640px;">The row is a continuous rolling window of the last 7 days, always ending at today. The oldest day scrolls off the left every day. No cycle boundary, no "week 2" reset moment — progress is always visible.</p>
+<div class="grid">
+  <div class="item">
+    <p class="label">Day 8 — 6 real days + today's plus</p>
+    <div class="card">
+      <div class="card-content">
+        <p class="copy">How are you feeling today?</p>
+        <div class="dots">
+          <div class="dot-col"><div class="dot green"></div><span class="letter">S</span></div>
+          <div class="dot-col"><div class="dot green"></div><span class="letter">M</span></div>
+          <div class="dot-col"><div class="dot green"></div><span class="letter">T</span></div>
+          <div class="dot-col"><div class="dot green"></div><span class="letter">W</span></div>
+          <div class="dot-col"><div class="dot green"></div><span class="letter">T</span></div>
+          <div class="dot-col"><div class="dot green"></div><span class="letter">F</span></div>
+          <div class="dot-col"><div class="dot plus"></div><span class="letter today">S</span></div>
+        </div>
+      </div>
+      <svg class="face" width="52" height="52" role="img" aria-label="Smiling face illustration"><use href="#face"/></svg>
+    </div>
+    <p style="font-size: 11px; color: var(--muted); margin: 6px 0 0;">The prior Saturday drops off the left; every day the whole row shifts. Progress stays continuously visible.</p>
+  </div>
+  <div class="item">
+    <p class="label">Rolling window, one missed day</p>
+    <div class="card">
+      <div class="card-content">
+        <p class="copy">How are you feeling today?</p>
+        <div class="dots">
+          <div class="dot-col"><div class="dot green"></div><span class="letter">M</span></div>
+          <div class="dot-col"><div class="dot green"></div><span class="letter">T</span></div>
+          <div class="dot-col"><div class="dot green"></div><span class="letter">W</span></div>
+          <div class="dot-col"><div class="dot green"></div><span class="letter">T</span></div>
+          <div class="dot-col"><div class="dot green"></div><span class="letter">F</span></div>
+          <div class="dot-col"><div class="dot missed"></div><span class="letter">S</span></div>
+          <div class="dot-col"><div class="dot plus"></div><span class="letter today">S</span></div>
+        </div>
+      </div>
+      <svg class="face" width="52" height="52" role="img" aria-label="Smiling face illustration"><use href="#face"/></svg>
+    </div>
+    <p style="font-size: 11px; color: var(--muted); margin: 6px 0 0;">Even with a real gap in the window, 5 of 7 dots stay green — the row still reads as mostly consistent rather than broken.</p>
+  </div>
+</div>
+
+<h2>4. Missed days — no limit, no reset</h2>
 <div class="grid">
   <div class="item">
     <p class="label">Day 6 — days 4 and 5 missed (2 days missed, last log 3 days ago)</p>
@@ -268,7 +333,7 @@
   </div>
 </div>
 
-<h2>4. 7 days without a log — card resets to the new-user state</h2>
+<h2>5. 7 days without a log — card resets to the new-user state</h2>
 <p style="font-size: 13px; color: #555; margin: -6px 0 14px; max-width: 640px;">Triggered when none of the user's logs fall within the last 7 days (or they have never logged). The card is exactly the same as the new-user card: today's "+" is the first dot, followed by 6 blank dots, with day letters starting from today, and the same copy. Nothing looks back at the gap.</p>
 <div class="grid">
   <div class="item">
@@ -289,71 +354,6 @@
       <svg class="face" width="52" height="52" role="img" aria-label="Smiling face illustration"><use href="#face"/></svg>
     </div>
     <p style="font-size: 11px; color: var(--muted); margin: 6px 0 0;">Identical to the new-user card. If the user logs today, the first dot turns green and the next day looks like a normal Day 2.</p>
-  </div>
-</div>
-
-<h2>5. Full week complete</h2>
-<div class="grid">
-  <div class="item">
-    <p class="label">Day 7 — after logging (7 green dots, full week complete)</p>
-    <div class="card">
-      <div class="card-content">
-        <p class="copy">A full week logged 🎉 You're building a real picture of how you feel</p>
-        <div class="dots">
-          <div class="dot-col"><div class="dot green"></div><span class="letter">S</span></div>
-          <div class="dot-col"><div class="dot green"></div><span class="letter">S</span></div>
-          <div class="dot-col"><div class="dot green"></div><span class="letter">M</span></div>
-          <div class="dot-col"><div class="dot green"></div><span class="letter">T</span></div>
-          <div class="dot-col"><div class="dot green"></div><span class="letter">W</span></div>
-          <div class="dot-col"><div class="dot green"></div><span class="letter">T</span></div>
-          <div class="dot-col"><div class="dot green"></div><span class="letter">F</span></div>
-        </div>
-      </div>
-      <svg class="face" width="52" height="52" role="img" aria-label="Smiling face illustration"><use href="#face"/></svg>
-    </div>
-  </div>
-</div>
-
-<h2>5b. The day after a completed week</h2>
-<p style="font-size: 13px; color: #555; margin: -6px 0 14px; max-width: 640px;">The row is a continuous rolling window of the last 7 days, always ending at today. The oldest day scrolls off the left every day. No cycle boundary, no "week 2" reset moment — progress is always visible.</p>
-<div class="grid">
-  <div class="item">
-    <p class="label">Day 8 — 6 real days + today's plus</p>
-    <div class="card">
-      <div class="card-content">
-        <p class="copy">How are you feeling today?</p>
-        <div class="dots">
-          <div class="dot-col"><div class="dot green"></div><span class="letter">S</span></div>
-          <div class="dot-col"><div class="dot green"></div><span class="letter">M</span></div>
-          <div class="dot-col"><div class="dot green"></div><span class="letter">T</span></div>
-          <div class="dot-col"><div class="dot green"></div><span class="letter">W</span></div>
-          <div class="dot-col"><div class="dot green"></div><span class="letter">T</span></div>
-          <div class="dot-col"><div class="dot green"></div><span class="letter">F</span></div>
-          <div class="dot-col"><div class="dot plus"></div><span class="letter today">S</span></div>
-        </div>
-      </div>
-      <svg class="face" width="52" height="52" role="img" aria-label="Smiling face illustration"><use href="#face"/></svg>
-    </div>
-    <p style="font-size: 11px; color: var(--muted); margin: 6px 0 0;">The prior Saturday drops off the left; every day the whole row shifts. Progress stays continuously visible.</p>
-  </div>
-  <div class="item">
-    <p class="label">Rolling window, one missed day</p>
-    <div class="card">
-      <div class="card-content">
-        <p class="copy">How are you feeling today?</p>
-        <div class="dots">
-          <div class="dot-col"><div class="dot green"></div><span class="letter">M</span></div>
-          <div class="dot-col"><div class="dot green"></div><span class="letter">T</span></div>
-          <div class="dot-col"><div class="dot green"></div><span class="letter">W</span></div>
-          <div class="dot-col"><div class="dot green"></div><span class="letter">T</span></div>
-          <div class="dot-col"><div class="dot green"></div><span class="letter">F</span></div>
-          <div class="dot-col"><div class="dot missed"></div><span class="letter">S</span></div>
-          <div class="dot-col"><div class="dot plus"></div><span class="letter today">S</span></div>
-        </div>
-      </div>
-      <svg class="face" width="52" height="52" role="img" aria-label="Smiling face illustration"><use href="#face"/></svg>
-    </div>
-    <p style="font-size: 11px; color: var(--muted); margin: 6px 0 0;">Even with a real gap in the window, 5 of 7 dots stay green — the row still reads as mostly consistent rather than broken.</p>
   </div>
 </div>
 
